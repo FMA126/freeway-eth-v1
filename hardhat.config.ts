@@ -23,8 +23,18 @@ const config: HardhatUserConfig = {
     ],
   },
   namedAccounts: {
-    deployer: 0,
-    simpleERC20Beneficiary: 1,
+    deployer: {
+      default: 1,
+      80001: 1
+    },
+    driver: {
+      default: 2,
+      80001: 2
+    },
+    rider: {
+      default: 3,
+      80001: 3
+    }
   },
   networks: addForkConfiguration({
     hardhat: {
@@ -45,6 +55,10 @@ const config: HardhatUserConfig = {
     mainnet: {
       url: node_url('mainnet'),
       accounts: accounts('mainnet'),
+    },
+    mumbai: {
+      url: node_url('mumbai'),
+      accounts: accounts('mumbai')
     },
     rinkeby: {
       url: node_url('rinkeby'),

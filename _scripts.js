@@ -77,7 +77,8 @@ async function performAction(rawArgs) {
     );
   } else if (firstArg === 'deploy') {
     const {fixedArgs, extra} = parseArgs(args, 1, {});
-    await execute(`hardhat --network ${fixedArgs[0]} deploy ${extra.join(' ')}`);
+    console.log(fixedArgs[0], extra)
+    await execute(`hardhat --network ${fixedArgs[0]} deploy ${extra.join(' ')}`).catch(err => console.error('Error on Deploy', err));
   } else if (firstArg === 'export') {
     const {fixedArgs} = parseArgs(args, 2, {});
     await execute(`hardhat --network ${fixedArgs[0]} export --export ${fixedArgs[1]}`);
